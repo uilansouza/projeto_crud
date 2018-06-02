@@ -4,38 +4,33 @@ $page = "CADASTRO";
 $conn = getConn() ;
 
 
+
 if($conn && $_POST ){
     
-    if(addProduct($conn, $_POST['nome'],$_POST['preco'], $_POST['quant'] )){
-        
-        header("Location: lista.php?action=add&message=success");
+    $added = addProduct( $conn, $_POST['nome'], $_POST['preco'] ,$_POST['quant'],$_POST['id_categoria']   );
+
+   
+    if($added){
+  
+         header("Location: lista.php?action=add&message=success");
     }else{
         header("Location: cadastro.php?action=add&message=failed");
     }
 
-    // $query = "INSERT INTO produtos
-    // (nome,preco,quant) VALUES (
+}
 
-    // '{$_POST['nome']}',
-    //  {$_POST['quant']},
-    //  {$_POST['preco']}
-    
-    
-    
-    
-    
-    // )";
 
-    // if(mysqli_query($conn, $query)){
-    //     header("Location: lista.php");
 
-    // };
-   // print_r($query);
-    
 
-//print_r($query);
+
+if($conn){
+
+    $categories = getCategories($conn);
 
 }
+
+
+
 
 
 ?>
@@ -74,8 +69,18 @@ if($conn && $_POST ){
                     <label for="preco">Preço</label>
                      <input type="text" name="preco" class="form-control" id="preco" placeholder="0.00">
                 </div>
+                <?php while ( $categ = mysqli_fetch_assoc($categories)):?>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="categ-<?=$categ['id']?>" name="id_categoria" value="<?=$categ['id']?>" class="custom-control-input">
+                        <label class="custom-control-label" for="categ-<?=$categ['id']?>"><?=$categ['nome']?></label>
+                    </div>
+                <?php endwhile ?>
+                
+
+
 
             </div>
+            <br>
             
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>

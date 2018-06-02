@@ -11,6 +11,8 @@ if($conn){
 
 }
 
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -37,6 +39,7 @@ if($conn){
             <th scope="col">Produto</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Preço</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Total</th>
             <th scope="col">Açoes</th>
             </tr>
@@ -45,9 +48,10 @@ if($conn){
             <?php while($prod = mysqli_fetch_assoc($result)): ?>
             <tr>
                 <th scope="row"><?=$prod['id']?></th>
-                <td><?=$prod['nome']?></td>
+                <td><?=$prod['nome_produto']?></td>
                 <td><?=$prod['quant']?></td>
                 <td><?=number_format($prod['preco'],2,",",".")?></td>
+                <td><?=$prod['nome_categoria']?></td>
                 <td>R$: <?=number_format($total=$prod['preco']*$prod['quant'],2,",",".")?></td>
                 <td>
                 <form action="editar.php" method="GET" >
