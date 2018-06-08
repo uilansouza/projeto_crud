@@ -1,6 +1,6 @@
 <!-- validacao de erro -->
 <br>
-<?php if($_GET && $_GET['message']=='failed'):?>
+<?php if(isset($_GET['message']) && $_GET['message']=='failed'):?>
     <div class="alert alert-danger" role="alert">
 
         <?php
@@ -23,13 +23,7 @@
     </div>
 <?php endif ;?>
 
-
-
-
-
-
-
-<?php if($_GET && $_GET['message']=='success'):?>
+<?php if(isset($_GET['message']) && $_GET['message']=='success'):?>
         <div class="alert alert-success" role="alert">
             <?php
                 if($_GET['action']=='add'){
