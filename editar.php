@@ -2,11 +2,16 @@
 include_once "inc/utils.php";
 $page = "EDITAR";
 
+$checked ="";
+
 $conn = getConn();
 
 if($conn && $_GET){
+  
+
  
   $prod = getProduct( getProductById($conn, $_GET['id']) );
+   $categories = getCategories($conn);
 
   if(!$prod){
     header("Location: lista.php?action=edit&message=failed");
@@ -16,7 +21,8 @@ if($conn && $_GET){
 
 
 if($conn && $_POST){
-  $update = updateProduct($conn, $_POST['id'], $_POST['nome'], $_POST['quant'], $_POST['preco']);
+  
+  $update = updateProduct($conn, $_POST['id'], $_POST['nome'], $_POST['quant'], $_POST['preco'], $_POST['id_categoria']);
 
   if($update){
     header("Location: lista.php?action=edit&message=success");
@@ -62,6 +68,14 @@ if($conn && $_POST){
                     <label for="preco">Preço</label>
                      <input type="text" name="preco" class="form-control" id="preco" placeholder="0.00"value="<?=$prod['preco']?>" >
                 </div>
+
+                 <?php while ( $categ = mysqli_fetch_assoc($categories)):?>
+                    <?php $checked = $prod['id_categoria']==$categ['id']?"checked":""; ?>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="categ-<?=$categ['id']?>" <?=$checked?> name="id_categoria" value="<?=$categ['id']?>" class="custom-control-input">
+                        <label class="custom-control-label" for="categ-<?=$categ['id']?>"><?=$categ['nome']?></label>
+                    </div>
+                <?php endwhile ?>
 
             </div>
             
