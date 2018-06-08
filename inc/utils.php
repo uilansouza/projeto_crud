@@ -22,11 +22,14 @@ function getProductById($conn, $id){
     $dados = mysqli_fetch_assoc($result);
 }
 
-function updateProduct ($conn, $id, $nome, $quant, $preco){
+function updateProduct ($conn, $id, $nome, $quant, $preco, $id_categoria){
+
+  //  var_dump($id_categoria);
+   // die();
 
     if($id && is_numeric($id)){
 
-        $query = " UPDATE produtos SET nome='{$nome}',quant='{$quant}', preco='{$preco}' 
+        $query = " UPDATE produtos SET nome='{$nome}',quant='{$quant}', preco='{$preco}',id_categoria = {$id_categoria} 
               WHERE id = '{$id}'";
 
         return mysqli_query($conn, $query);
@@ -35,7 +38,8 @@ function updateProduct ($conn, $id, $nome, $quant, $preco){
 }
 
 
-function getProducts($conn){
+function getProducts($conn ){
+
     $query = " SELECT  
 
     p.id,
@@ -45,15 +49,17 @@ function getProducts($conn){
     c.nome as nome_categoria
     
      FROM produtos as p
-    INNER JOIN categoria as c
+    LEFT JOIN categoria as c
     
-    ON (p.id_categoria = c.id);
-    
-    
-    
+    ON (p.id_categoria = c.id)  
+
     ";
+
+
+
     return  mysqli_query($conn, $query); 
 }
+
 
 function getProduct($result){
     return mysqli_fetch_assoc($result);
