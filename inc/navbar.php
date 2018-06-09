@@ -12,7 +12,10 @@
             </li>
             <li class="nav-item  <?=navActive($page,"CADASTRO");?>">
                 <a class="nav-link" href="cadastro.php">Cadastro</a>
-            </li>           
+            </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">Sair</a>
+            </li>          
         </ul>
     </div>
 </nav>

@@ -1,6 +1,7 @@
 <?php
 include_once "inc/utils.php";
 var_dump($_POST);
+redirIfNotLogged();
 
 $conn = getConn();
 

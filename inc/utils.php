@@ -89,10 +89,33 @@ function removeProducts($conn, $id){
 
 function getCategories($conn){
 
-    $query = "SELECT * FROM categoria ORDER BY Nome";
+    $query = "SELECT id, nome, email FROM categoria ORDER BY Nome";
 
     return  mysqli_query($conn, $query);
 
+}
+
+function getUser($conn, $email, $senha){
+
+     $query = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha' ";
+     return mysqli_query($conn, $query);
+
+}
+
+function redirIfNotLogged(){
+
+
+   if(!isset($_COOKIE['USER_LOGGED']) ){
+
+           
+    header("Location: index.php?r=notLog") ;
+   }
+}
+
+function logout(){
+    if (isset($_COOKIE['USER_LOGGED'])){
+        setcookie("USER_LOGGED","",time()-3600);
+    }
 }
 
 

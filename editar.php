@@ -1,6 +1,7 @@
 <?php
 include_once "inc/utils.php";
 $page = "EDITAR";
+redirIfNotLogged();
 
 $checked ="";
 

@@ -2,6 +2,7 @@
 include_once "inc/utils.php";
 $page = "CADASTRO";
 $conn = getConn() ;
+redirIfNotLogged();
 
 
 

@@ -2,6 +2,10 @@
 include_once "inc/utils.php";
 
 $page = "LISTA";
+redirIfNotLogged();
+
+
+
 $conn = getConn();
 
 if($conn){
@@ -24,6 +28,7 @@ if($conn){
   <body>
   
     <?php include "inc/navbar.php"?>
+    <center><h1>Lista  de Produto</h1></center>
     
     <br>
     <!-- validacao de erro -->
@@ -31,7 +36,7 @@ if($conn){
 <div class="container">
 
 <?php include_once "inc/alerts.php"?>
-<center><h2>Lista de produtos</h2></center>
+
 
     <table class="table table-hover">
         <thead class="thead-dark">
