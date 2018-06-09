@@ -70,6 +70,7 @@ if($conn){
                     <label for="preco">Preço</label>
                      <input type="text" name="preco" class="form-control" id="preco" placeholder="0.00">
                 </div>
+             
                 <?php while ( $categ = mysqli_fetch_assoc($categories)):?>
                     <div class="custom-control custom-radio">
                         <input style="padding-left:3px" type="radio" id="categ-<?=$categ['id']?>" name="id_categoria" value="<?=$categ['id']?>" class="custom-control-input">

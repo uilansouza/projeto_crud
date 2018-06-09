@@ -2,6 +2,7 @@
 
 include_once "inc/utils.php";
 
+session_start();
 
 ?>
 
@@ -14,6 +15,7 @@ include_once "inc/utils.php";
   </head>
   <body>
     <?php include "inc/navbar.php"?>
+    <?php include_once "inc/alerts.php"?>
     
     
     <div class="container">

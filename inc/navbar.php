@@ -1,7 +1,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.php">Projeto CRUD
+    <a class="navbar-brand" href="bemvindo.php">Projeto CRUD
        
     </a>
 
@@ -19,3 +19,6 @@
         </ul>
     </div>
 </nav>
+<div class="container" >
+    <p><strong>Bem vindo, <?=$_SESSION['USER_LOGGED_NAME'];?></strong></p>
+</div>

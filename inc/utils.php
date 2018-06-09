@@ -89,7 +89,7 @@ function removeProducts($conn, $id){
 
 function getCategories($conn){
 
-    $query = "SELECT id, nome, email FROM categoria ORDER BY Nome";
+    $query = "SELECT * FROM categoria ORDER BY Nome";
 
     return  mysqli_query($conn, $query);
 
@@ -97,25 +97,29 @@ function getCategories($conn){
 
 function getUser($conn, $email, $senha){
 
-     $query = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha' ";
+     $query = "SELECT * FROM usuarios WHERE email = '$email' AND senha =  md5('$senha')";
      return mysqli_query($conn, $query);
 
 }
 
 function redirIfNotLogged(){
 
+    session_start();
+    if( !(isset($_SESSION['AUTH']) && $_SESSION['AUTH']==TRUE) ){
 
-   if(!isset($_COOKIE['USER_LOGGED']) ){
-
-           
-    header("Location: index.php?r=notLog") ;
-   }
+        
+    
+         header("Location: index.php?r=notLog") ;
+    }
 }
 
 function logout(){
-    if (isset($_COOKIE['USER_LOGGED'])){
-        setcookie("USER_LOGGED","",time()-3600);
+    session_start();
+
+    if( (isset($_SESSION['AUTH']) && $_SESSION['AUTH']==TRUE) ){
+        session_destroy();
     }
+
 }
 
 
