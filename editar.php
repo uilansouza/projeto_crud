@@ -78,7 +78,7 @@ if($conn && $_POST){
                 <?php endwhile ?>
 
             </div>
-            
+            <br>
             <button type="submit" class="btn btn-primary">Atualizar</button>
         </form>
     </div>

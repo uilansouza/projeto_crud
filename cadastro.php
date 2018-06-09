@@ -71,7 +71,7 @@ if($conn){
                 </div>
                 <?php while ( $categ = mysqli_fetch_assoc($categories)):?>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="categ-<?=$categ['id']?>" name="id_categoria" value="<?=$categ['id']?>" class="custom-control-input">
+                        <input style="padding-left:3px" type="radio" id="categ-<?=$categ['id']?>" name="id_categoria" value="<?=$categ['id']?>" class="custom-control-input">
                         <label class="custom-control-label" for="categ-<?=$categ['id']?>"><?=$categ['nome']?></label>
                     </div>
                 <?php endwhile ?>
@@ -80,8 +80,7 @@ if($conn){
 
 
             </div>
-            <br>
-            
+            <br>            
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>

@@ -31,6 +31,7 @@ if($conn){
 <div class="container">
 
 <?php include_once "inc/alerts.php"?>
+<center><h2>Lista de produtos</h2></center>
 
     <table class="table table-hover">
         <thead class="thead-dark">

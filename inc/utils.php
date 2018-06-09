@@ -51,7 +51,8 @@ function getProducts($conn ){
      FROM produtos as p
     LEFT JOIN categoria as c
     
-    ON (p.id_categoria = c.id)  
+    ON (p.id_categoria = c.id)
+    ORDER BY p.id DESC
 
     ";
 
@@ -88,7 +89,7 @@ function removeProducts($conn, $id){
 
 function getCategories($conn){
 
-    $query = "SELECT * FROM categoria";
+    $query = "SELECT * FROM categoria ORDER BY Nome";
 
     return  mysqli_query($conn, $query);
 
