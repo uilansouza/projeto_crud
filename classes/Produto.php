@@ -1,5 +1,6 @@
 <?php
 
+//Professor: leonardo.souza@caelum.com.br
 class Produto
 {   //Propriedade
     public $id;
