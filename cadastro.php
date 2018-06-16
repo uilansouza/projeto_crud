@@ -1,27 +1,35 @@
 <?php
 include_once "inc/utils.php";
+include_once "classes/Produto.php";
 $page = "CADASTRO";
 $conn = getConn() ;
 redirIfNotLogged();
 
 
 
+
+
+
 if($conn && $_POST ){
+
+    $produto = new Produto();
+    $produto->nome = $_POST['nome'];
+    $produto->preco = $_POST['preco'];
+    $produto->quant = $_POST['quant'];
+    $produto->idCategoria = $_POST['id_categoria'];
+   
     
-    $added = addProduct( $conn, $_POST['nome'], $_POST['preco'] ,$_POST['quant'],$_POST['id_categoria']   );
+    $added = addProduct( $conn, $produto  );
 
    
     if($added){
   
-         header("Location: lista.php?action=add&message=success");
+        header("Location: lista.php?action=add&message=success");
     }else{
         header("Location: cadastro.php?action=add&message=failed");
     }
 
 }
-
-
-
 
 
 if($conn){
