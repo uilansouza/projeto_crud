@@ -43,9 +43,10 @@ if($conn){
             <th scope="col">#</th>
             <th scope="col">Produto</th>
             <th scope="col">Quantidade</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Categoria</th>
+            <th scope="col">Estoque</th>
+            <th scope="col">Preço Unit</th>
             <th scope="col">Total</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Açoes</th>
             </tr>
         </thead>
@@ -53,11 +54,13 @@ if($conn){
             <?php foreach($produtos as $produto): ?>
             <tr>
                 <th scope="row"><?=$produto->id?></th>
-                <td><?=$produto->nome?></td>
+                <td><?=$produto->getNome()?></td>
                 <td><?=$produto->quant?></td>
-                <td><?=number_format($produto->preco,2,",",".")?></td>
+                <td><?=$produto->estoque()?></td>
+                <td><?=$produto->getPreco()?></td>
+                <td><?=$produto->total()?></td>
                 <td><?=$produto->categoria->nome?></td>
-                <td>R$: <?=number_format($total=$produto->preco*$produto->quant,2,",",".")?></td>
+                
                 <td>
                 <form action="editar.php" method="GET" >
                         <input type="hidden" name="id" value="<?=$produto->id?>" >

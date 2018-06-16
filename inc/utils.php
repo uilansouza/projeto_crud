@@ -65,7 +65,7 @@ function getProducts($conn ){
       
         $produto = new Produto();
         $produto ->id = $prod['id'];
-        $produto ->nome = $prod['nome_produto'];
+        $produto ->Setnome($prod['nome_produto']);
         $produto ->preco = $prod['preco'];
         $produto ->quant = $prod['quant'];
         $produto ->categoria = new Categoria();
@@ -96,7 +96,7 @@ function addProduct($conn, $prod){
 
     $query = "INSERT INTO produtos (nome,preco,quant,id_categoria )VALUES
     
-     ('{$prod->nome}', {$prod->preco}, {$prod->quant}, {$prod->categoria->id} )";
+     ('{$prod->getnome()}', {$prod->preco}, {$prod->quant}, {$prod->categoria->id} )";
 
     return (mysqli_query($conn, $query));
 }

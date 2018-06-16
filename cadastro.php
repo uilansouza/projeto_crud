@@ -13,7 +13,7 @@ redirIfNotLogged();
 if($conn && $_POST ){
 
     $produto = new Produto();
-    $produto->nome = $_POST['nome'];
+    $produto->setNome($_POST['nome']);
     $produto->preco = $_POST['preco'];
     $produto->quant = $_POST['quant'];
     $produto->categoria = new Categoria();
