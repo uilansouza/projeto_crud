@@ -1,5 +1,6 @@
 <?php
 include_once "classes/Produto.php";
+include_once "classes/Categoria.php";
 
 function navActive($pg,$key ){
     if($pg==$key){
@@ -67,8 +68,11 @@ function getProducts($conn ){
         $produto ->nome = $prod['nome_produto'];
         $produto ->preco = $prod['preco'];
         $produto ->quant = $prod['quant'];
-        $produto ->idCategoria = $prod['id_categoria'];
-        $produto ->nomeCategoria = $prod['nome_categoria'];
+        $produto ->categoria = new Categoria();
+        $produto ->categoria->id = $prod['id_categoria'];
+        $produto ->categoria->nome = $prod['nome_categoria'];
+       // $produto ->idCategoria = $prod['id_categoria'];
+      //  $produto ->nomeCategoria = $prod['nome_categoria'];
         array_push($products, $produto);      
 
 
@@ -92,7 +96,7 @@ function addProduct($conn, $prod){
 
     $query = "INSERT INTO produtos (nome,preco,quant,id_categoria )VALUES
     
-     ('{$prod->nome}', {$prod->preco}, {$prod->quant}, {$prod->idCategoria} )";
+     ('{$prod->nome}', {$prod->preco}, {$prod->quant}, {$prod->categoria->id} )";
 
     return (mysqli_query($conn, $query));
 }

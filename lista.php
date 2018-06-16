@@ -56,7 +56,7 @@ if($conn){
                 <td><?=$produto->nome?></td>
                 <td><?=$produto->quant?></td>
                 <td><?=number_format($produto->preco,2,",",".")?></td>
-                <td><?=$produto->nomeCategoria?></td>
+                <td><?=$produto->categoria->nome?></td>
                 <td>R$: <?=number_format($total=$produto->preco*$produto->quant,2,",",".")?></td>
                 <td>
                 <form action="editar.php" method="GET" >
