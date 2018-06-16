@@ -1,6 +1,6 @@
 <?php
 include_once "inc/utils.php";
-include_once "classes/Produto.php";
+
 $page = "CADASTRO";
 $conn = getConn() ;
 redirIfNotLogged();

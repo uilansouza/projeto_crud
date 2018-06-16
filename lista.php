@@ -9,9 +9,8 @@ redirIfNotLogged();
 $conn = getConn();
 
 if($conn){
-    $result = getProducts($conn);
-
-   
+    $produtos = getProducts($conn);
+     
 
 }
 
@@ -51,17 +50,17 @@ if($conn){
             </tr>
         </thead>
         <tbody>
-            <?php while($prod = mysqli_fetch_assoc($result)): ?>
+            <?php foreach($produtos as $produto): ?>
             <tr>
-                <th scope="row"><?=$prod['id']?></th>
-                <td><?=$prod['nome_produto']?></td>
-                <td><?=$prod['quant']?></td>
-                <td><?=number_format($prod['preco'],2,",",".")?></td>
-                <td><?=$prod['nome_categoria']?></td>
-                <td>R$: <?=number_format($total=$prod['preco']*$prod['quant'],2,",",".")?></td>
+                <th scope="row"><?=$produto->id?></th>
+                <td><?=$produto->nome?></td>
+                <td><?=$produto->quant?></td>
+                <td><?=number_format($produto->preco,2,",",".")?></td>
+                <td><?=$produto->nomeCategoria?></td>
+                <td>R$: <?=number_format($total=$produto->preco*$produto->quant,2,",",".")?></td>
                 <td>
                 <form action="editar.php" method="GET" >
-                        <input type="hidden" name="id" value="<?=$prod['id']?>" >
+                        <input type="hidden" name="id" value="<?=$produto->id?>" >
                         <button type="submit"   class="btn btn-primary">Editar</button>
 
                     </form>
@@ -69,13 +68,13 @@ if($conn){
                     <!-- <a href="excluir.php?id=">Excluir</a> -->
 
                     <form action="excluir.php" method="POST" >
-                        <input type="hidden" name="id" value="<?=$prod['id']?>" >
+                        <input type="hidden" name="id" value="<?=$produto->id?>" >
                         <button type="submit"   class="btn btn-danger">Excluir</button>
 
                     </form>
                 </td>
             </tr>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
                 
         </tbody>
     </table>
