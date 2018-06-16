@@ -9,6 +9,16 @@ class Produto
     public $categoria;
     public $minEstoque = 50;
 
+    //construtor
+
+    function __construct($nome, $preco, $quant, $categoria){
+        $this->nome=$nome;
+        $this->preco=$preco;
+        $this->quant=$quant;
+        $this->categoria=$categoria;
+
+    }
+
     //Metodos
 
     private function formataMoeda($valor){

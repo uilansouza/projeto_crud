@@ -12,12 +12,13 @@ redirIfNotLogged();
 
 if($conn && $_POST ){
 
-    $produto = new Produto();
-    $produto->setNome($_POST['nome']);
-    $produto->preco = $_POST['preco'];
-    $produto->quant = $_POST['quant'];
-    $produto->categoria = new Categoria();
-    $produto->categoria->nome = $_POST['nome_categoria'];
+    $produto = new Produto($_POST['nome'],$_POST['preco'],$_POST['quant'], new Categoria());
+  
+    // $produto->setNome($_POST['nome']);
+    // $produto->preco = $_POST['preco'];
+    // $produto->quant = $_POST['quant'];
+    // $produto->categoria = new Categoria();
+    //$produto->categoria->nome = $_POST['nome_categoria'];
     $produto->categoria->id = $_POST['id_categoria'];
    
     
